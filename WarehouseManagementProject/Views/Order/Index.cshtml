@@ -1,0 +1,92 @@
+﻿@model List<Order>
+
+<div id="header">
+    <h2 class="text-dark py-2">ORDER LIST</h2>
+</div>
+<div class="p-4">
+    <div class="row pb-3">
+        <div class="col-6"></div>
+        <div class="col-6 text-end"><a class="btn btn-primary" asp-controller="Order" asp-action="Create"><i class="bi bi-plus-circle"></i> Create New Order</a></div>
+    </div>
+    <table id="ctgTable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Order Date</td>
+                <td>TotalAmount</td>
+                <td>Customer</td>
+                <td>Status</td>
+                <td></td>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        var dataTable;
+
+        $(document).ready(function () {
+            loadDataTable();
+        })
+
+        function loadDataTable() {
+            dataTable = $('#ctgTable').DataTable({
+                "ajax": { url: '/Order/getall' },
+                "columns": [
+                    { data: 'orderDate' },
+                    { data: 'totalAmount' },
+                    { data: 'customer.customerName' },
+                    { data: 'status' },
+                    {
+                        data: 'orderID',
+                        "render": function (data) {
+                            return `<div class="w-75 btn-group" role="group">
+                                <a href="/OrderDetails?orderID=${data}" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-square"></i> Details
+                                </a>
+                                <a href="/order/edit?id=${data}" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a onClick=Delete('/order/delete/${data}') class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>`
+                        },
+                        "width": "25%"
+                    },
+                ]
+            });
+        }
+        function Delete(url) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: url,
+                        type: 'DELETE',
+                        success: function (data) {
+                            if(data.success == true){
+                                dataTable.ajax.reload();
+                                Swal.fire(data.message, "", "success");
+                            } else if (data.success == false){
+                                Swal.fire({
+                                    icon: "error",
+                                            title: "Oops...",
+                                    text: data.message,
+                                });
+                            }
+                        },
+                    });
+                }
+            });
+
+        }
+    </script>
+}

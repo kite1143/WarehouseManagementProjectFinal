@@ -1,0 +1,148 @@
+﻿@model DashboardVM
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="content bg-light">
+    <div class="form-card">
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="bg-white bg-gradient rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fa-solid fa-box fa-3x" style="color: #E94649;"></i>
+                        <div class="ms-3">
+                            <p class="mb-2">Inventory</p>
+                            <h6 class="mb-0 text-end">@Model.inventoryQuantity Qty.</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fas fa-truck fa-3x" style="color: #C4C24A;"></i>
+                        <div class="ms-3">
+                            <p class="mb-2">Order</p>
+                            <h6 class="mb-0 text-end">@Model.ordersQuantity Qty.</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fas fa-undo-alt fa-3x" style="color: #F6B53F;"></i>
+                        <div class="ms-3">
+                            <p class="mb-2">Goods Cancelled</p>
+                            <h6 class="mb-0 text-end">@Model.orderCancelledQuantity Qty.</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fas fa-boxes fa-3x" style="color: #009CFF;"></i>
+                        <div class="ms-3">
+                            <p class="mb-2">Goods Receive</p>
+                            <h6 class="mb-0 text-end">@Model.receivingQuantity Qty.</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-white text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Goods Orders By Category</h6>
+                        </div>
+                        <div style="margin: auto;">
+                            <canvas id="myChart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-white text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Goods Receivings By Category</h6>
+                        </div>
+                        <div style="margin: auto;">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-white text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Goods Inventory By Category</h6>
+                        </div>
+                        <div style="width: 50%; margin: auto;">
+                            <canvas id="myChart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-white text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Orders By Status</h6>
+                        </div>
+                        <div style="width: 50%; margin: auto;">
+                            <canvas id="myChart4"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-white text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Latest Orders</h6>
+                        </div>
+                        <div id="lastestOrder" align="center">
+                            <table id="lastestOrderTable" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>Order Date</th>
+                                        <th>Customer Name</th>
+                                        <th>Status</th>
+                                        <th>Total Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-white text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Latest Receivings</h6>
+                        </div>
+                        <div id="lastestReceiving" align="center">
+                            <table id="lastestReceivingTable" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>Receiving Date</th>
+                                        <th>Supplier Name</th>
+                                        <th>Warehouse</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="~/js/dashboardscript.js"></script>
+}

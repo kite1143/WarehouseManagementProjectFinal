@@ -1,0 +1,42 @@
+﻿@model OrderDetailsVM
+
+<div id="header">
+    <h2 class="text-dark py-2">Add Details for Order ID: @Model.od.OrderID</h2>
+</div>
+<div class="p-4">
+    <form method="post" class="row">
+        <input asp-for="@Model.od.OrderDetailsID" readonly hidden />
+        <input asp-for="@Model.od.OrderID" readonly hidden />
+        <input asp-for="@Model.oldQuantity" readonly hidden />
+        <input asp-for="@Model.od.ProductID" readonly hidden />
+        <div class="border p-3">
+            <div class="form-floating py-2 col-12">
+                <select asp-for="@Model.od.ProductID" disabled asp-items="@ViewBag.ListProducts" class="form-control border-0 shadow">
+                </select>
+                <label asp-for="@Model.od.ProductID" class="ms-2">Product</label>
+                <span asp-validation-for="@Model.od.ProductID" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <input asp-for="@Model.od.Quantity" class="form-control border-0 shadow" />
+                <label asp-for="@Model.od.Quantity" class="ms-2"></label>
+                <span asp-validation-for="@Model.od.Quantity" class="text-danger"></span>
+            </div>
+            <div class="row pt-3">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-dark form-control">Add</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="OrderDetails" asp-action="Index" asp-route-orderId="@Model.od.OrderID" class="btn btn-white btn-outline border form-control">
+                        Back To List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

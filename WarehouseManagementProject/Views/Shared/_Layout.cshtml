@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>@ViewData["Title"] - WarehouseManagementProject</title>
+    <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+    <!-- Begin Top nav -->
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="">Warehouse System</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-auto" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            
+        </ul>
+        <partial name="_LoginPartial" />
+    </nav>
+    <!-- End Top nav -->
+    <div id="layoutSidenav">
+        <!-- Begin Left menu -->
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Dashboard</div>
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboards
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Orders</div>
+                        <a class="nav-link" asp-controller="Order" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+                            Orders
+                        </a>
+                        <a class="nav-link" asp-controller="Customer" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group"></i></div>
+                            Customer
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Receiving</div>
+                        <a class="nav-link" asp-controller="Receiving" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-right-to-bracket"></i></div>
+                            Receivings
+                        </a>
+                        <a class="nav-link" asp-controller="Warehouse" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-warehouse"></i></div>
+                            Warehouses
+                        </a>
+                        <a class="nav-link" asp-controller="Supplier" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-field"></i></div>
+                            Suppliers
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Inventory</div>
+                        <a class="nav-link" asp-controller="Category" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Categories
+                        </a>
+                        <a class="nav-link" asp-controller="Product" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-box"></i></div>
+                            Products
+                        </a>
+                        <a class="nav-link" asp-controller="Inventory" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-box-archive"></i></div>
+                            Inventories
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- End Left menu -->
+        <!-- Begin Right content -->
+        <div id="layoutSidenav_content">
+            <!-- Begin Main -->
+            <main>
+                <div class="container-fluid px-4">
+                    
+                            <div role="main">
+                                @RenderBody()
+                            </div>
+                </div>
+            </main>
+            <!-- End Main -->
+            <!-- Begin Footer -->
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; 2023</div>
+                    </div>
+                </div>
+            </footer>
+            <!-- End Footer -->
+        </div>
+        <!-- End Right content -->
+    </div>
+    <script src="~/js/scripts.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

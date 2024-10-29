@@ -1,0 +1,48 @@
+﻿@model Receiving
+
+<div id="header">
+    <h2 class="text-dark py-2">EDIT RECEIVING</h2>
+</div>
+<div class="p-4">
+    <form method="post" class="row">
+        <input asp-for="ReceivingID" readonly hidden />
+        <div class="border p-3">
+            <div class="form-floating py-2 col-12">
+                <input asp-for="ReceivingDate" class="form-control border-0 shadow" />
+                <label asp-for="ReceivingDate" class="ms-2"></label>
+                <span asp-validation-for="ReceivingDate" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <select asp-for="SupplierID" asp-items="@ViewBag.ListSuppliers" class="form-control border-0 shadow">
+                </select>
+                <label asp-for="SupplierID" class="ms-2"></label>
+                <span asp-validation-for="SupplierID" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <select asp-for="WarehouseID" asp-items="@ViewBag.ListWarehouses" class="form-control border-0 shadow">
+                </select>
+                <label asp-for="WarehouseID" class="ms-2"></label>
+                <span asp-validation-for="WarehouseID" class="text-danger"></span>
+            </div>
+            <div class="row pt-3">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-dark form-control">Edit</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Receiving" asp-action="Index" class="btn btn-white btn-outline border form-control">
+                        Back To List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

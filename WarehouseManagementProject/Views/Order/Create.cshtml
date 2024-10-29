@@ -1,0 +1,49 @@
+﻿@model Order
+
+<div id="header">
+    <h2 class="text-dark py-2">CREATE ORDER</h2>
+</div>
+<div class="p-4">
+    <form method="post" class="row">
+        <div class="border p-3">
+            <div class="form-floating py-2 col-12">
+                <input asp-for="@Model.OrderDate" class="form-control border-0 shadow" />
+                <label asp-for="@Model.OrderDate" class="ms-2"></label>
+                <span asp-validation-for="@Model.OrderDate" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <select asp-for="@Model.CustomerID" asp-items="@ViewBag.ListCustomers" class="form-control border-0 shadow">
+                    <option selected disabled>Choose Customer</option>
+                </select>
+                <label asp-for="@Model.CustomerID" class="ms-2"></label>
+                <span asp-validation-for="@Model.CustomerID" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <select asp-for="@Model.Status" asp-items="@ViewBag.ListStatus" class="form-control border-0 shadow">
+                    <option selected disabled>Choose Status</option>
+                </select>
+                <label asp-for="@Model.Status" class="ms-2"></label>
+                <span asp-validation-for="@Model.Status" class="text-danger"></span>
+            </div>
+            <div class="row pt-3">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-dark form-control">Create</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Order" asp-action="Index" class="btn btn-white btn-outline border form-control">
+                        Back To List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

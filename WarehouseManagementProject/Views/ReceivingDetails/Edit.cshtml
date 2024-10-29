@@ -1,0 +1,46 @@
+﻿@model ReceivingDetailsVM
+
+
+<div id="header">
+    <h2 class="text-dark py-2">Edit Details ID: @Model.rd.ReceivingDetailsID</h2>
+</div>
+<div class="p-4">
+    <form method="post" class="row">
+        <input asp-for="@Model.rd.ReceivingDetailsID" readonly hidden />
+        <input asp-for="@Model.rd.ReceivingID" readonly hidden />
+        <input asp-for="@Model.oldRDQuantity" readonly hidden />
+        <input asp-for="@Model.rd.ProductID" readonly hidden />
+        <div class="border p-3">
+            <div class="form-floating py-2 col-12">
+                <select asp-for="@Model.rd.ProductID" asp-items="@ViewBag.ListProducts" disabled class="form-control border-0 shadow">
+                </select>
+                <label asp-for="@Model.rd.ProductID" class="ms-2">Product</label>
+                <span asp-validation-for="@Model.rd.ProductID" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <input asp-for="@Model.rd.Quantity" class="form-control border-0 shadow" />
+                <label asp-for="@Model.rd.Quantity" class="ms-2"></label>
+                <span asp-validation-for="@Model.rd.Quantity" class="text-danger"></span>
+            </div>
+            <div class="row pt-3">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-dark form-control">Edit</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="ReceivingDetails" asp-action="Index" asp-route-receivingId="@Model.rd.ReceivingID" class="btn btn-white btn-outline border form-control">
+                        Back To List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
