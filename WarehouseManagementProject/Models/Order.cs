@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 
 namespace WarehouseManagementProject.Models
 {
@@ -19,6 +20,7 @@ namespace WarehouseManagementProject.Models
         public int CustomerID { get; set; }
         [ForeignKey("CustomerID")]
         [ValidateNever]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Customer Customer { get; set; }
     }
 }

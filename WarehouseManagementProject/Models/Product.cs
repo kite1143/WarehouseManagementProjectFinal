@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 
 namespace WarehouseManagementProject.Models
 {
@@ -14,6 +15,7 @@ namespace WarehouseManagementProject.Models
         public int? CategoryID { get; set; }
         [ForeignKey("CategoryID")]
         [ValidateNever]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Category Category { get; set; }
         [Required]
         public double UnitPrice { get; set; }

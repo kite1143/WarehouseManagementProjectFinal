@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 
 namespace WarehouseManagementProject.Models
 {
@@ -9,14 +10,16 @@ namespace WarehouseManagementProject.Models
         [Key]
         public int OrderDetailsID { get; set; }
 
-        [ForeignKey("Order")]
         public int OrderID { get; set; }
+        [ForeignKey("OrderID")]
         [ValidateNever]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Order Order { get; set; }
 
-        [ForeignKey("Product")]
         public int ProductID { get; set; }
+        [ForeignKey("ProductID")]
         [ValidateNever]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Product Product { get; set; }
 
         [Required]
