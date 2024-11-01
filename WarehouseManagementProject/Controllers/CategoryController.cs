@@ -33,6 +33,7 @@ namespace WarehouseManagementProject.Controllers
             {
                 applicationDbContext.Categories.Add(category);
                 applicationDbContext.SaveChanges();
+                TempData["success"] = "Category Created Successfully";
                 return RedirectToAction(nameof(Index));
             }
             return View();
